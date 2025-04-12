@@ -1,0 +1,217 @@
+{
+    "users": [
+        {
+            "username": "test",
+            "created_at": "2025-04-12 05:41:00",
+            "last_active": "2025-04-12 06:02:41"
+        },
+        {
+            "username": "test1",
+            "created_at": "2025-04-12 06:02:46",
+            "last_active": "2025-04-12 06:02:46"
+        },
+        {
+            "username": "DXDIAG",
+            "created_at": "2025-04-12 06:07:14",
+            "last_active": "2025-04-12 06:27:26"
+        },
+        {
+            "username": "LOCELYN",
+            "created_at": "2025-04-12 06:08:37",
+            "last_active": "2025-04-12 06:08:37"
+        },
+        {
+            "username": "HWASK9",
+            "created_at": "2025-04-12 06:12:08",
+            "last_active": "2025-04-12 06:13:38"
+        },
+        {
+            "username": "TEST",
+            "created_at": "2025-04-12 06:14:29",
+            "last_active": "2025-04-12 06:14:29"
+        }
+    ],
+    "rooms": {
+        "room_67fa01f0816cf": {
+            "name": "test",
+            "code": "4GQXWH",
+            "created_by": "test",
+            "created_at": "2025-04-12 06:02:24",
+            "members": [
+                "test",
+                "test1",
+                "DXDIAG"
+            ],
+            "messages": [
+                {
+                    "username": "System",
+                    "text": "test1 has joined the room.",
+                    "timestamp": "2025-04-12 06:03:52"
+                },
+                {
+                    "username": "test",
+                    "text": "test",
+                    "timestamp": "2025-04-12 06:06:31"
+                },
+                {
+                    "username": "test1",
+                    "text": "test",
+                    "timestamp": "2025-04-12 06:06:34"
+                },
+                {
+                    "username": "System",
+                    "text": "DXDIAG has joined the room.",
+                    "timestamp": "2025-04-12 06:09:51"
+                }
+            ]
+        },
+        "room_67fa030402d9a": {
+            "name": "BOGARD",
+            "code": "6EKMMH",
+            "created_by": "test",
+            "created_at": "2025-04-12 06:07:00",
+            "members": [
+                "test",
+                "DXDIAG"
+            ],
+            "messages": [
+                {
+                    "username": "System",
+                    "text": "DXDIAG has joined the room.",
+                    "timestamp": "2025-04-12 06:10:05"
+                }
+            ]
+        },
+        "room_67fa0332e4e7f": {
+            "name": "ADMIN",
+            "code": "HWASK9",
+            "created_by": "DXDIAG",
+            "created_at": "2025-04-12 06:07:46",
+            "members": [
+                "DXDIAG",
+                "HWASK9",
+                "LOCELYN"
+            ],
+            "messages": [
+                {
+                    "username": "System",
+                    "text": "LOCELYN has joined the room.",
+                    "timestamp": "2025-04-12 06:10:33"
+                },
+                {
+                    "username": "LOCELYN",
+                    "text": "test",
+                    "timestamp": "2025-04-12 06:10:36"
+                },
+                {
+                    "username": "DXDIAG",
+                    "text": "test",
+                    "timestamp": "2025-04-12 06:12:03"
+                },
+                {
+                    "username": "System",
+                    "text": "HWASK9 has joined the room.",
+                    "timestamp": "2025-04-12 06:12:17"
+                },
+                {
+                    "username": "HWASK9",
+                    "text": "rers",
+                    "timestamp": "2025-04-12 06:12:41"
+                },
+                {
+                    "username": "DXDIAG",
+                    "text": "ae",
+                    "timestamp": "2025-04-12 06:12:51"
+                },
+                {
+                    "username": "DXDIAG",
+                    "text": "\ud83e\udd23",
+                    "timestamp": "2025-04-12 06:13:01"
+                },
+                {
+                    "username": "HWASK9",
+                    "text": "\ud83e\udd29\ud83e\udd29",
+                    "timestamp": "2025-04-12 06:13:40"
+                },
+                {
+                    "username": "HWASK9",
+                    "text": "\ud83e\udd29\ud83e\udd29",
+                    "timestamp": "2025-04-12 06:13:44"
+                },
+                {
+                    "username": "System",
+                    "text": "TEST has joined the room.",
+                    "timestamp": "2025-04-12 06:14:47"
+                },
+                {
+                    "username": "LOCELYN",
+                    "text": "panbget",
+                    "timestamp": "2025-04-12 06:14:51"
+                },
+                {
+                    "username": "TEST",
+                    "text": "TEST",
+                    "timestamp": "2025-04-12 06:14:52"
+                },
+                {
+                    "username": "DXDIAG",
+                    "text": "panget ni ae",
+                    "timestamp": "2025-04-12 06:18:12"
+                },
+                {
+                    "username": "System",
+                    "text": "LOCELYN has been removed from the room.",
+                    "timestamp": "2025-04-12 06:19:01"
+                },
+                {
+                    "username": "System",
+                    "text": "LOCELYN has joined the room.",
+                    "timestamp": "2025-04-12 06:19:06"
+                },
+                {
+                    "username": "System",
+                    "text": "LOCELYN has been removed from the room.",
+                    "timestamp": "2025-04-12 06:19:30"
+                },
+                {
+                    "username": "System",
+                    "text": "LOCELYN has joined the room.",
+                    "timestamp": "2025-04-12 06:19:34"
+                },
+                {
+                    "username": "System",
+                    "text": "TEST has been removed from the room.",
+                    "timestamp": "2025-04-12 06:19:49"
+                },
+                {
+                    "username": "System",
+                    "text": "TEST has joined the room.",
+                    "timestamp": "2025-04-12 06:19:53"
+                },
+                {
+                    "username": "DXDIAG",
+                    "text": "test",
+                    "timestamp": "2025-04-12 06:22:21"
+                },
+                {
+                    "username": "System",
+                    "text": "TEST has been removed from the room.",
+                    "timestamp": "2025-04-12 06:22:44"
+                },
+                {
+                    "username": "System",
+                    "text": "TEST has joined the room.",
+                    "timestamp": "2025-04-12 06:22:47"
+                },
+                {
+                    "username": "System",
+                    "text": "TEST has been removed from the room.",
+                    "timestamp": "2025-04-12 06:26:01"
+                }
+            ],
+            "banned_members": [
+                "TEST"
+            ]
+        }
+    }
+}
