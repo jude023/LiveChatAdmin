@@ -1,52 +1,141 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to Live Chat Room</title>
-    <meta http-equiv="refresh" content="0;url=index.php">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Live Chat Room</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Live Chat Room</h1>
-        <p>Redirecting to the chat application...</p>
-        <p>If you are not redirected automatically, <a href="index.php">click here</a>.</p>
+        <header>
+            <h1>Live Chat Room</h1>
+            <div id="user-info" class="user-info hidden">
+                <p>Welcome, <span id="username-display"></span></p>
+                <button id="logout-btn" class="btn btn-danger">Logout</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Login Screen -->
+            <div id="login-screen" class="login-form">
+                <h2>Enter Your Username</h2>
+                <div class="form-group">
+                    <input type="text" id="username-input" placeholder="Username" required>
+                </div>
+                <button id="login-btn" class="btn btn-primary">Enter Chat</button>
+            </div>
+
+            <!-- Dashboard -->
+            <div id="dashboard" class="dashboard hidden">
+                <div class="room-actions">
+                    <h2>Chat Rooms</h2>
+                    <div class="action-buttons">
+                        <button id="create-room-btn" class="btn btn-primary">Create Room</button>
+                        <button id="join-room-btn" class="btn btn-success">Join Room</button>
+                    </div>
+                </div>
+
+                <div class="my-rooms">
+                    <h3>Your Rooms</h3>
+                    <ul id="user-rooms-list" class="room-list">
+                        <li class="no-rooms">Loading rooms...</li>
+                    </ul>
+                </div>
+                
+                <div class="all-rooms">
+                    <h3>All Available Rooms</h3>
+                    <ul id="all-rooms-list" class="room-list">
+                        <li class="no-rooms">Loading rooms...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Create Room Form -->
+            <div id="create-room-form" class="room-form hidden">
+                <h2>Create a New Chat Room</h2>
+                <div class="form-group">
+                    <label for="room-name-input">Room Name:</label>
+                    <input type="text" id="room-name-input" placeholder="Enter room name" required>
+                </div>
+                <button id="create-room-submit" class="btn btn-success">Create Room</button>
+                <button id="create-room-cancel" class="btn btn-secondary">Cancel</button>
+            </div>
+
+            <!-- Join Room Form -->
+            <div id="join-room-form" class="room-form hidden">
+                <h2>Join a Chat Room</h2>
+                <div class="form-group">
+                    <label for="room-code-input">Room Code:</label>
+                    <input type="text" id="room-code-input" placeholder="Enter room code" required>
+                </div>
+                <button id="join-room-submit" class="btn btn-success">Join Room</button>
+                <button id="join-room-cancel" class="btn btn-secondary">Cancel</button>
+                <div id="join-error" class="error-message hidden"></div>
+            </div>
+
+            <!-- Chat Room -->
+            <div id="chat-room" class="chat-container hidden">
+                <div class="chat-header">
+                    <h2 id="room-name-display">Room Name</h2>
+                    <div class="room-info">
+                        <p>Room Code: <span id="room-code-display"></span></p>
+                        <button id="back-to-dashboard" class="btn btn-primary">Back to Dashboard</button>
+                    </div>
+                </div>
+
+                <div class="chat-main">
+                    <div class="users-panel">
+                        <h3>Users in Room</h3>
+                        <ul id="room-users-list" class="users-list">
+                            <li>Loading users...</li>
+                        </ul>
+                        <div id="host-controls" class="invite-section hidden">
+                            <button id="invite-btn" class="btn btn-success">Invite Users</button>
+                            <button id="delete-room-btn" class="btn btn-danger">Delete Room</button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-panel">
+                        <div id="messages" class="messages">
+                            <div class="no-messages">No messages yet. Start the conversation!</div>
+                        </div>
+                        
+                        <div class="message-input">
+                            <input type="text" id="message-input" placeholder="Type your message..." required>
+                            <button id="send-message-btn" class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invite Screen -->
+            <div id="invite-screen" class="invite-container hidden">
+                <h2>Invite Users</h2>
+                <p>Share this room code with others to invite them to join your chat room:</p>
+                <div class="room-code">
+                    <span id="invite-code-display"></span>
+                    <button id="copy-code-btn" class="btn btn-primary">Copy Code</button>
+                </div>
+                <p id="copy-success" class="copy-success hidden">Code copied to clipboard!</p>
+                
+                <h3>Current Members</h3>
+                <ul id="invite-users-list" class="users-list">
+                    <li>Loading users...</li>
+                </ul>
+                
+                <button id="back-to-chat-btn" class="btn btn-primary">Back to Chat</button>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; <span id="current-year"></span> Live Chat Room Application</p>
+        </footer>
     </div>
-    
-    <script>
-        // JavaScript redirect as a fallback
-        window.location.href = "index.php";
-    </script>
+
+    <script src="app.js"></script>
 </body>
 </html>
